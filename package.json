@@ -4,16 +4,16 @@
   "private": false,
   "homepage": "https://github.com/blockscout/frontend#readme",
   "engines": {
-    "node": "20.11.0",
+    "node": "^20.11.0",
     "npm": "10.2.4"
   },
   "scripts": {
     "dev": "./tools/scripts/dev.sh",
     "dev:preset": "./tools/scripts/dev.preset.sh",
     "build": "next build",
-    "build:docker": "docker build --build-arg GIT_COMMIT_SHA=$(git rev-parse --short HEAD) --build-arg GIT_TAG=$(git describe --tags --abbrev=0) -t blockscout-frontend:local ./",
+    "build:docker": "docker build --build-arg GIT_COMMIT_SHA=$(git rev-parse --short HEAD) --build-arg GIT_TAG=$(git describe --tags --abbrev=0)  --build-arg ARCH=amd64/ -t yashthakorrh/blockscout_frontend:v2 ./",
     "start": "next start",
-    "start:docker:local": "docker run -p 3000:3000 --env-file .env.local blockscout-frontend:local",
+    "start:docker:local": "docker run -p 3000:3000 --env-file .env.local blockscout_frontend",
     "start:docker:preset": "./tools/scripts/docker.preset.sh",
     "lint:eslint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:eslint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
@@ -115,7 +115,7 @@
     "@types/jest": "^29.2.0",
     "@types/js-cookie": "^3.0.2",
     "@types/mixpanel-browser": "^2.38.1",
-    "@types/node": "20.11.0",
+    "@types/node": "^20.11.0",
     "@types/phoenix": "^1.5.4",
     "@types/qrcode": "^1.5.0",
     "@types/react": "18.0.9",
